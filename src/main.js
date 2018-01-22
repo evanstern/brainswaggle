@@ -1,12 +1,16 @@
 import 'pixi'
 import 'p2'
 import Phaser from 'phaser'
+import io from 'socket.io-client';
 
 import BootState from './states/Boot'
 import SplashState from './states/Splash'
 import GameState from './states/Game'
 
 import config from './config'
+
+const socket = io.connect('http://localhost:3030');
+socket.emit('player:join', 'this is a player');
 
 class Game extends Phaser.Game {
   constructor () {
